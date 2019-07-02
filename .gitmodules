@@ -4,3 +4,6 @@
 [submodule "SubMods/SubMod2"]
 	path = SubMods/SubMod2
 	url = git@github.com:dexyhub/submod2.git
+[submodule "SubMods/SubMod3"]
+	path = SubMods/SubMod3
+	url = git@github.com:dexyhub/submod3.git

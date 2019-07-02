@@ -1,0 +1,3 @@
+[submodule "/Users/ext_ckr/Desktop/Repos/testsubmod/SubMod1"]
+	path = /Users/ext_ckr/Desktop/Repos/testsubmod/SubMod1
+	url = git@github.com:dexyhub/submod1.git

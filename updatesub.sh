@@ -44,7 +44,8 @@ if [ $count != 0 ];
     git reset --hard
     git checkout master
     git branch -D updateSubmodules
-    git submodule update
+    git add .
+    #git submodule update
     #git push origin --delete updateSubmodules
     git stash pop
 
@@ -53,7 +54,8 @@ if [ $count != 0 ];
     git reset --hard HEAD^
     git checkout master
     git branch -D updateSubmodules
-    git submodule update
+    git add .
+    #git submodule update
     #git push origin --delete updateSubmodules
     git stash pop
 fi

@@ -2,28 +2,55 @@
 
 # Uppdate submodule to latest master branch commit
 updateSubmodules () {
-    echo "Starting updateSubmodules function"
+    echo "Entering updateSubmodules function"
     git submodule update --remote
-    return 0
-    echo "updateSubmodules function completed"
+    #return 0
+    echo "Exiting updateSubmodules function"
 }
 
-# Push update chnages to working/parent tree
+# Push updated changes to working/parent tree
 pushUpdates() {
+    echo "Entering pushUpdates function"
     git add . 
-    git commit -m "{DATE} Update submodules" #Would be nice if we get a list of updated submodules
+    git commit -m "$(date): Update submodules"
     git push origin updateSubmodules:master
-    echo "pushUpdates function completed"
+    echo "Exiting pushUpdates function"
+}
+
+# #Check if submodule has changes
+checkSubmodulesChanges() {
+   echo "Entering checkSubmodulesChanges function"
+   touch tmp.txt
+   sed 1d tmp.txt > tmp.txt
+   git submodule status > tmp.txt
+   count=`grep -o -i "+" tmp.txt| wc -l`
+   #return count
+   rm tmp.txt
+   echo "Exiting checkSubmodulesChanges function"
 }
 
 
-git stash #to make sure there are no git changes in the git dir
-git checkout -b updateSubmodules #create a new temp branch
-updateSubmodules() #git submodule update --remote
-echo The updateSubmodules function has a return value of $?
-pushUpdates()
-echo The pushUpdates function has a return value of $?
-git branch -D updateSubmodules #delete temp branch
-git stash pop #revert to previous git status
+git stash
+git checkout -b updateSubmodules
+updateSubmodules()
+#echo The updateSubmodules function has a return value of $?
+#Check if submodule has changes
+checkSubmodulesChanges()
+echo $count
+if [ $count != 0 ];
+  then
+    pushUpdates()
+    git checkout master
+    git reset --hard
+    git branch -D updateSubmodules
+    git stash pop
+
+ else
+    echo "Submodules does not have any changes"
+    git checkout master
+    git branch -D updateSubmodules
+    git stash pop
+fi
 
 echo "Script Completed"
+

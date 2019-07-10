@@ -1,6 +1,14 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 test working tree
+=======
+ddgtest working tree
+>>>>>>> Stashed changes
+=======
+ddgtest working tree
+>>>>>>> Stashed changes
 =======
 ddgtest working tree
 >>>>>>> Stashed changes

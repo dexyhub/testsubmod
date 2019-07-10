@@ -31,6 +31,7 @@ function checkSubmodulesChanges() {
 
 
 git stash
+git submodule init
 git checkout -b updateSubmodules
 updateSubmodules
 #echo The updateSubmodules function has a return value of $?
@@ -40,16 +41,18 @@ echo $count
 if [ $count != 0 ];
   then
     pushUpdates
-    git checkout master
     git reset --hard
+    git checkout master
     git branch -D updateSubmodules
+    #git push origin --delete updateSubmodules
     git stash pop
 
  else
     echo "Submodules does not have any changes"
-    git checkout master
     git reset --hard
+    git checkout master
     git branch -D updateSubmodules
+    #git push origin --delete updateSubmodules
     git stash pop
 fi
 

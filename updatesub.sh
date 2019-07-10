@@ -48,6 +48,7 @@ if [ $count != 0 ];
  else
     echo "Submodules does not have any changes"
     git checkout master
+    git reset --hard
     git branch -D updateSubmodules
     git stash pop
 fi

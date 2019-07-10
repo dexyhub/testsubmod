@@ -1,7 +1,7 @@
 #! /bin/sh
 
 # Uppdate submodule to latest master branch commit
-updateSubmodules () {
+function updateSubmodules () {
     echo "Entering updateSubmodules function"
     git submodule update --remote
     #return 0
@@ -9,7 +9,7 @@ updateSubmodules () {
 }
 
 # Push updated changes to working/parent tree
-pushUpdates() {
+function pushUpdates() {
     echo "Entering pushUpdates function"
     git add . 
     git commit -m "$(date): Update submodules"
@@ -18,10 +18,10 @@ pushUpdates() {
 }
 
 # #Check if submodule has changes
-checkSubmodulesChanges() {
+function checkSubmodulesChanges() {
    echo "Entering checkSubmodulesChanges function"
    touch tmp.txt
-   sed 1d tmp.txt > tmp.txt
+   #sed 1d tmp.txt > tmp.txt
    git submodule status > tmp.txt
    count=`grep -o -i "+" tmp.txt| wc -l`
    #return count
@@ -32,14 +32,14 @@ checkSubmodulesChanges() {
 
 git stash
 git checkout -b updateSubmodules
-updateSubmodules()
+updateSubmodules
 #echo The updateSubmodules function has a return value of $?
 #Check if submodule has changes
-checkSubmodulesChanges()
+checkSubmodulesChanges
 echo $count
 if [ $count != 0 ];
   then
-    pushUpdates()
+    pushUpdates
     git checkout master
     git reset --hard
     git branch -D updateSubmodules

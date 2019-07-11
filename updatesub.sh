@@ -47,8 +47,8 @@ function tempBranch() {
 }
 
 # Temp branch for checkout instead of using master branch
-function updateSubmodules() {
-   echo "Entering updateSubmodules function"
+function subModulesBranch() {
+   echo "Entering subModulesBranch function"
    exists=`git show-ref refs/heads/updateSubmodules`
    if [ -n "$exists" ]; then
       echo 'branch exists!'
@@ -56,7 +56,7 @@ function updateSubmodules() {
    else
       git checkout -b updateSubmodules
    fi
-   echo "Exiting updateSubmodules function"
+   echo "Exiting subModulesBranch function"
 }
 
 
@@ -64,7 +64,7 @@ git stash
 git submodule init
 updateSubmodules
 #git checkout -b updateSubmodules
-updateSubmodules
+subModulesBranch
 #echo The updateSubmodules function has a return value of $?
 checkSubmodulesChanges
 echo $count

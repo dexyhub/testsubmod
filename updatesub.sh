@@ -41,7 +41,7 @@ echo $count
 if [ $count != 0 ];
   then
     pushUpdates
-    git reset --hard
+    #git reset --hard
     git checkout temp
     git branch -D updateSubmodules
     #git add .
@@ -51,7 +51,7 @@ if [ $count != 0 ];
 
  else
     echo "Submodules does not have any changes"
-    git reset --hard HEAD^
+    #git reset --hard HEAD^
     git checkout temp
     git branch -D updateSubmodules
     #git add .

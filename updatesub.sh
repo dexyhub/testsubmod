@@ -11,6 +11,7 @@ function updateSubmodules () {
 # Push updated changes to working/parent tree
 function pushUpdates() {
     echo "Entering pushUpdates function"
+    git pull origin master
     git add . 
     git commit -m "$(date): Update submodules"
     git push origin updateSubmodules:master

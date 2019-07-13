@@ -14,7 +14,8 @@ function pushUpdates() {
     git pull origin master
     git add . 
     git commit -m "$(date): Update submodules"
-    git push origin updateSubmodules:master
+    git push origin updateSubmodules
+    #git push origin updateSubmodules:master
     echo "Exiting pushUpdates function"
 }
 

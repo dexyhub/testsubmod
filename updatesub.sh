@@ -36,7 +36,7 @@ function pushUpdates() {
     #git pull origin master
     #git add .
     git submodule foreach --recursive git fetch
-    git submodule foreach --recursive git reset --hard origin/master
+    #git submodule foreach --recursive git reset --hard origin/master
     git add ReportGenerator validators/*
     git commit -m "$(date): Update submodules"
     git push origin updateSubmodules:master
